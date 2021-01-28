@@ -3,7 +3,8 @@
 unamestr=`uname`
 if [ "$unamestr" == 'Linux' ]; then
     prof=~/.bashrc
-    mini_conda_url=https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+    #mini_conda_url=https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+    mini_conda_url=https://repo.anaconda.com/miniconda/Miniconda3-py37_4.9.2-Linux-x86_64.sh
     matplotlibdir=~/.config/matplotlib
 elif [ "$unamestr" == 'FreeBSD' ] || [ "$unamestr" == 'Darwin' ]; then
     prof=~/.bash_profile
@@ -22,7 +23,8 @@ source $prof
 VENV=shakemap
 
 developer=0
-py_ver=3.8
+#py_ver=3.8
+py_ver=3.7
 while getopts p:d FLAG; do
   case $FLAG in
     p)
@@ -139,37 +141,37 @@ dev_list=(
 package_list=(
       "python=$py_ver"
       "$CC_PKG"
-      "cartopy>=0.18"
-      "cython"
-      "defusedxml"
+      "cartopy=0.18.0"
+      "cython=0.29.21"
+      "defusedxml=0.6.0"
       "descartes"
-      "docutils"
-      "configobj"
-      "fiona"
+      "docutils=0.14"
+      "configobj=5.0.6"
+      "fiona=1.8.13.post1"
       "gdal"
-      "h5py"
-      "impactutils"
+      "h5py=2.10.0"
+      "impactutils=0.8.26"
       "ipython"
-      "libcomcat"
+      "libcomcat=2.0.7"
       "lockfile"
-      "mapio"
+      "mapio=0.6.2"
       "matplotlib-base"
-      "numpy"
-      "obspy"
+      "numpy=1.18.5"
+      "obspy=1.2.2"
       "openmp"
-      "pandas"
+      "pandas=1.1.5"
       "ps2ff"
-      "psutil"
-      "pyproj"
-      "pytest"
+      "psutil=5.6.7"
+      "pyproj=2.6.1.post1"
+      "pytest=6.2.2"
       "pytest-cov"
       "python-daemon"
       "pytest-faulthandler"
       "pytest-azurepipelines"
       "scikit-image"
-      "scipy"
-      "shapely"
-      "simplekml"
+      "scipy=1.4.1"
+      "shapely=1.7.1"
+      "simplekml=1.3.2"
       "strec"
       "versioneer"
       "vcrpy"
