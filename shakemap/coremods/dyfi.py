@@ -6,7 +6,12 @@ import json
 # third party imports
 from libcomcat.search import get_event_by_id
 from libcomcat.classes import DetailEvent
-from impactutils.io.table import dataframe_to_xml
+#from impactutils.io.table import dataframe_to_xml
+try:
+   from impactutils.io.table import dataframe_to_xml
+   USE_DF_TO_XML = 1
+except:
+   USE_DF_TO_XML = 0
 import pandas as pd
 import numpy as np
 
@@ -89,9 +94,12 @@ class DYFIModule(CoreModule):
 
         reference = 'USGS Did You Feel It? System'
         xmlfile = os.path.join(datadir, 'dyfi_dat.xml')
-        dataframe_to_xml(dataframe, xmlfile, reference)
-        self.logger.info('Wrote %i DYFI records to %s' %
-                         (len(dataframe), xmlfile))
+        if (USE_DF_TO_XML):
+            dataframe_to_xml(dataframe, xmlfile, reference)
+            self.logger.info('Wrote %i DYFI records to %s' %
+                             (len(dataframe), xmlfile))
+        else:
+            self.logger.warning('dataframe_to_xml cannot be imported.  Cannot write %i DYFI records to %s' % (len(dataframe), xmlfile))
 
 
 def _get_dyfi_dataframe(detail_or_url, inputfile=None):
