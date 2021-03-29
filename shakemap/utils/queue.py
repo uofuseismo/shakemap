@@ -599,7 +599,11 @@ class Queue(object):
                     replist.insert(0, event_timestamp + delay)
                     dispatch = False
 
-            event['repeats'] = replist if len(replist) > 0 else None
+            #event['repeats'] = replist if len(replist) > 0 else None
+            event['repeats'] = replist
+            if (replist is not None):
+                if len(replist) > 0:
+                   event['repeats'] = replist 
             event['lastrun'] = 0
         else:
             #
