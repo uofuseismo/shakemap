@@ -8,7 +8,8 @@ from libcomcat.search import get_event_by_id
 from libcomcat.classes import DetailEvent
 #from impactutils.io.table import dataframe_to_xml
 try:
-   from impactutils.io.table import dataframe_to_xml
+   #from impactutils.io.table import dataframe_to_xml
+   from shakemap.utils.dataframe import dataframe_to_xml
    USE_DF_TO_XML = 1
 except:
    USE_DF_TO_XML = 0
